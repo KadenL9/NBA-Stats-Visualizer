@@ -1,0 +1,269 @@
+Package Organization
+|----- interface.py
+|----- api.py
+|----- api_tests.py
+|----- main.py
+
+
+-----Interface Class-----
+
+Important Functions
+	
+	__init__(): creates our tkinter window with configurations and adds all elements
+
+	run(): actually runs the interface
+
+	_add_frames(): adds all the frames that make up our tkinter window
+
+		_create_title_frame(): creates the title frame which just contains the title
+
+		_create_search_frame(): creates the search frame which contains stuff pertaining to 
+		player search and select
+
+		_create_bio_frame(): creates the bio frame which contains bio of selected player
+
+		_create_panel1_frame(): creates the panel 1 frame
+
+		_create_panel2_frame(): creates the panel 2 frame
+
+	_add_elements(): adds all the underlying elements of our tkinter window
+
+	_create_search_bars(): generate search bar for player by first/last name
+		
+		_add_placeholders(): specifically for _create_search_bars(), generates placeholders in search
+
+	_create_title(): creates title of our application
+
+	_create_select_title(): creates select player title
+
+	_create_enter_search_button(): button for searching player, when clicked conducts the search
+
+	_create_clear_button(): button for clearing the search area
+
+		_clear_search(): clears search area (first and last name)
+
+	_display_matching_players(): display all players that came up from search
+
+	_create_available_players(): create the listbox that displays matching players
+
+	_create_stat_label(): creates a label for the stat dropdown
+
+	_create_stat_dropdown(): creates a dropdown menu that allows the user to choose which stat to look at
+
+		_dropdown_callback(): create eventhandler function for ComboboxSelected event in stat dropdown
+
+	_create_select_player_button(): creates the button that is pressed when selecting a player
+
+		_select_player(): run when the player select button is clicked; updates api and displays new info
+
+	_update_bio_info(): display all information when a player is selected
+
+	_create_bio_title(): add title for bio section
+
+	_create_career_stats_title: add subtitle for career stats section in bio
+	
+	_create_career_stats_display(): creates the display for the player's career stats
+
+	_update_career_stats(): updates career stats every time a new player is selected
+
+	_create_age_display(): create the display for the age and birthday of the selected player
+
+	_update_age(): update age display when selected player changes
+
+	_create_team_display(): create display for current team, teams played for, draft year, and season experience
+
+	_update_team(): update information pertaining to team display
+
+	_create_misc_display(): create display for other miscellaneous info in bio
+
+	_update_misc(): update miscellaneous information
+
+	_update_plots(): update the plots when stat type changes or player changes
+
+	_create_yby_plot(): create the plot that displays career averages per season for the player in comparison to career average
+
+	_update_yby_plot(): update the year-by-year plot when stat type changes or player changes
+
+	_create_game_log(): create the bar graph that displays stat for player for each game played in this season compared to season average
+
+	_update_game_log(): update the bar graph when stat type changes or player changes
+
+	_create_season_log(): create a display sheet of the per season stats for the player
+
+	_update_season_log(): update log when either the player or stat type changes
+
+
+
+Available Instance Variables
+	self._window
+	|
+	|___self._title_frame
+	|   |___self._title
+	|   |___self._title2
+	|
+	|___self._search_frame
+	|	|___self._create_select_title
+	|	|
+	|	|___self._first_name
+	|	|___self._first_name_search_bar
+	|	|___self._last_name
+	|	|___self._last_name_search_bar
+	|	|___self._submit_button
+	|	|
+	|	|___self._player_listbox
+	|   |
+	|	|___self._stat_label_border
+	|	|	|___self._stat_label
+	|	|
+	|   |___self._stat_dropdown
+	|
+	|___self._bio_frame
+	|	|___self._bio_title_panel
+	|	|___self._bio_title
+	|   |
+	|	|___self._career_stats_title_panel
+	|	|___self._career_stats_title
+	|	|
+	|	|___self._career_ppg_panel
+	|	|___self._career_ppg_label
+	|	|___self._career_ppg
+	|	|___self._career_ppg_display
+	|	|
+	|	|___self._career_rpg_panel
+	|	|___self._career_rpg_label
+	|	|___self._career_rpg
+	|	|___self._career_rpg_display
+	|	|
+	|	|___self._career_apg_panel
+	|	|___self._career_apg_label
+	|	|___self._career_apg
+	|	|___self._career_apg_display
+	|	|
+	|	|___self._career_bpg_panel
+	|	|___self._career_bpg_label
+	|	|___self._career_bpg
+	|	|___self._career_bpg_display
+	|	|
+	|	|___self._career_spg_panel
+	|	|___self._career_spg_label
+	|	|___self._career_spg
+	|	|___self._career_spg_display
+	|	|
+	|	|___self._age_panel
+	|	|___self._age_label
+	|	|___self._age
+	|	|___self._age_display
+	|	|
+	|	|___self._bday_panel
+	|	|___self._bday_label
+	|	|___self._bday
+	|	|___self._bday_display
+	|	|
+	|	|___self._current_team_panel
+	|	|___self._current_team_label
+	|	|___self._current_team
+	|	|___self._current_team_display
+	|	|
+	|	|___self._draft_panel
+	|	|___self._draft_label
+	|	|___self._draft
+	|	|___self._draft_display
+	|	|
+	|	|___self._experience_panel
+	|	|___self._experience_label
+	|	|___self._experience
+	|	|___self._experience_display
+	|	|
+	|	|___self._weight_panel
+	|	|___self._weight_label
+	|	|___self._weight
+	|	|___self._weight_display
+	|	|
+	|	|___self._height_panel
+	|	|___self._height_label
+	|	|___self._height
+	|	|___self._height_display
+	|
+	|___self._panel1
+	|	|___self._yby_fig
+	|	|___self._yby_canvas
+	|	|___self._yby_years
+	|	|___self._yby_data
+	|	|___self._yby_career_avg
+	|	|___self._yby_plot
+	|	|
+	|	|___self._gl_fig
+	|	|___self._gl_data
+	|	|___self._gl_avg
+	|	|___self._gl_dates
+	|	|___self._gl_plot
+	|	|___self._gl_canvas
+	|	|___self._gl_season_button
+	|	|___self._gl_last10_button
+	|	|___self._gl_last5_button
+	|	|
+	|	|___self._hit_fig
+	|	|___self._hit_cat
+	|	|___self._hit_hit
+	|	|___self._hit_tied
+	|	|___self._hit_miss
+	|	|___self._hit_plot
+	|	|___self._hit_canvas
+	|
+	|___self._panel2
+	|	|___self._season_log_panel
+	|	|___self._season_log_title
+	|	|
+
+
+-----API Class-----
+**Interacts with nba_api to grab data
+**Mostly consists of static functions
+
+Important Functions
+	
+	[[STATIC FUNCTIONS]]
+
+		search_players(): returns a LIST that contains all the ACTIVE players that match query
+
+		get_player_id(): returns an INT that represents the id of a player given the full name
+
+	[NON-STATIC FUNCTIONS]]
+
+		get_careerstats(): returns a JSON object that contains all the raw json data of the current player
+
+		get_bio(): returns json data of player's bio
+
+		get_pid(): get player id of current player api loaded up
+
+		get_last5_counts(): retruns the stat counter for the last 5 games
+
+		get_last10_counts(): returns the stat counter for the last 10 games
+
+		get_season_counts(): returns the stat counter for the current season
+
+		get_career_counts(): returns the stat counter for the career of the player
+
+		has_selected_player(): returns whether or not the api has a selected player
+
+		has_bio(): returns whether or not api was able to obtain bio information
+
+		has_gamelog(): returns whether or not gamelog for current season was obtained
+
+		has_hits(): returns whether or not hits were obtained
+
+		get_player_info_by_id(): obtain all the data pertaining to the selected player
+
+		get_career_average_stat(): returns the career stat that we are trying to find
+
+		get_career_convert(): basically used get_career_average_stat and returns correct data for combinations and special cases
+
+		get_year_by_year_stat(): returns a list of tuples that contains year and average of that year for a player's specificied stat
+
+		get_year_by_year_stat_avg(): works like get_year_by_year_stat() but takes the average (so not total) by dividing by number of games
+
+		per_year_convert(): basically uses get_year_by_year_stat_avg and returns correct data for combinations and special cases (e.g. PRA, RA, PA)
+
+		current_season_gamelog(): returns the gamelog for the selected stat in a list and returns a max number of games that are specified
+
+		get_hit_rates(): Sets api dictionaries equal to all the counts for the different hit rate metrics
